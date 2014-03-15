@@ -1,32 +1,42 @@
-v1:
 # Take activity name. Check if file already exists. 
 # If file exists, push the old contents down while adding the new info.
 # Else, create the file and add the contents.
 # Contents: comma-separated: started@, ended@, time_taken, comments. 
-# usage: timer.sh <activity_name> 
-
-v2
-# The ability to run the files in the background. Start the timer. Stop the timer. Intelligent timer decider.
-# usage: 
-## delegator.py <activity_name> s : start
-## delegator.py <activity_name> e : end
-## delegator.py <activity_name>   : intelligently decide
-## delegator.py 		  : 
-
-WHAT TO EXPECT:
 ## can sort on time or other things, can visualize a graph, can see if things are gettin slowed or fast.
 ## can filter/group data: on day, time, start time, etc
 ## can later add the functionality of adding comments or reasoning for higher or lower time.
 ## Add functionality of installing the app: Put the script in some location. Make it available. Also create /tmp/timer directory.
---## The timer for bash can even go in the background. Once the task is finished can run again. It will calculate the time. It can also send some reminder.
-## Can log multiple small tasks inside small tasks
 
-BUGS TO RESOLVE:
-# delegator.py without arguments. Currently this is creating start files, not completing the tasks.
-# Remove the start files, once things are done.
-
-FOR USAGE LATER:
 # USEFUL COMMANDS
 # timestamp=`date`; date -d @epoch_time: eg date -d @1394535337
 # awk -F"," '{print $1 $2 $3 $4 $5}'
 
+#LOG FILE
+echo $@
+activity=$1;
+dir="/tmp/timer";
+#mkdir -p "${dir}";
+file="${dir}/${activity}.txt";
+
+start=$2;
+end=$3;
+diff=$(( $end-$start  ));
+
+
+#PRINT TIME
+log_output="$start, $end, $diff";
+print_output="Total time taken by '${activity}' started at '`date -d @${start}`' took ${diff} seconds "
+echo "$print_output";
+echo "Enter 1 line comments if any.";
+
+read comments; echo ${comments}; 
+if [[ -z ${comments} ]];
+then comments="nil";
+fi;
+log_output="${log_output}, ${comments}";
+
+#LOG TO FILE
+if [ -f $file ];
+then echo "Activity done before"; echo "$log_output" >>  ${file};
+else echo "Activity first time"; echo "$log_output" >  ${file};
+fi;

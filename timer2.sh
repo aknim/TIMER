@@ -11,6 +11,26 @@
 # timestamp=`date`; date -d @epoch_time: eg date -d @1394535337
 # awk -F"," '{print $1 $2 $3 $4 $5}'
 
+# Note the time. Check if the start time file exists. If it exists, then the new time is the end time. Take the old time, new time and write in the file as in good old days.
+## May be delegate the work of writing to file, such that it can be isolately used in the above case and alno in the previous version.
+## Also about splitting the file, such that the old code doesn't need to be changed. What about changing to python or to some other design oriented language. Is python design oriented?
+## Learn about versioning names.
+# 1) Normal timer file
+# 2) Starter file: 
+# 3) End file.
+# 4) Manager file: 
+## Note time t.
+## Note name of activity. 
+### If name given, good.
+### If not given, than label it as Unknown and append the epoch time to it.
+## Check if argument of '--start' is passed
+###	--start: Take time t. Write to file <>.start. Close. [starter file]
+###	--end:	 Take time t. Note the start time from <>.start. Pass the data to the normal timer file. [ender file]
+###	nothing: check if starter file is there.
+####	If not, tell starter is not there and noted as starter time. Pass to starter file, with noargs.
+####	If starter is there, then pass to ender file, with noargs.
+
+
 #LOG FILE
 activity=$1;
 dir="/tmp/timer";

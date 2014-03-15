@@ -1,0 +1,10 @@
+v1:
+ usage: timer.sh <activity_name>: interactively start and end.
+
++v2
+ usage: 
+# delegator.py <activity_name> s : start
+# delegator.py <activity_name> e : end
+# delegator.py <activity_name>   : intelligently decide
+# delegator.py                   : yet to be working. But should work intelligently by using unknown name. Currently, create unknown<epoch-time>.txt
+
