@@ -1,0 +1,3 @@
+--read in installation location
+--copy files to installer location
+--create /tmp/timer/ directory

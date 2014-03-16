@@ -17,7 +17,8 @@ WHAT TO EXPECT:
 ## can sort on time or other things, can visualize a graph, can see if things are gettin slowed or fast.
 ## can filter/group data: on day, time, start time, etc
 ## can later add the functionality of adding comments or reasoning for higher or lower time.
-## Add functionality of installing the app: Put the script in some location. Make it available. Also create /tmp/timer directory.
+--## Add functionality of installing the app: Put the script in some location. Make it available. Also create /tmp/timer directory.
+## Further make rpm builds of the installation
 --## The timer for bash can even go in the background. Once the task is finished can run again. It will calculate the time. It can also send some reminder.
 ## Can log multiple small tasks inside small tasks
 
